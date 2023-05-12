@@ -74,9 +74,13 @@ const operands = document.querySelectorAll('.operand');
 operands.forEach((e)=>{
     e.addEventListener('click', ()=>{
         const key = e.getAttribute('data-key');
-        operand = `${operand}${key}`;
-        console.log(operand);
-        displayNumber();
+        if (key === `0`&& operand === ``) {}
+        else {
+            operand = `${operand}${key}`;
+            console.log(operand);
+            displayNumber();
+        }
+
     })
 })
 
