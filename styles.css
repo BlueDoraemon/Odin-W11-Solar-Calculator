@@ -1,0 +1,26 @@
+.calculator{
+    display: flex;
+    flex-direction: column;
+    border:2px solid #0c0c0d;
+    background-color: #dde2e5;
+    max-width: 500px;
+}
+.top{justify-content: space-between;
+    display: flex;
+}
+.display{
+    font-family: 'Segment7Standard',serif;
+}
+.solar-panel{
+    display: flex;
+}
+.solar-cell{
+    width:20px;
+    height: 20px;
+    border:1px solid #0c0c0d;
+    background-color: #32535c;
+    box-shadow: inset 0.2px 0.2px 2px white;
+}
+.button{
+    font-family: 'Noto Serif',serif;
+}
