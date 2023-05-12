@@ -16,6 +16,10 @@ function divide(a,b) {
 
 }
 
+function clearCE() {
+    operand = ''; //clear CE
+}
+
 function rounding(number) {
     return number.toFixed(8); //display how many decimal places
 }
@@ -66,7 +70,7 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((e)=>{
     e.addEventListener('click',()=>{
-        operand = ''; //clear CE
+        
         const key = e.getAttribute('data-key');
         operator = key;
         console.log(operator);
