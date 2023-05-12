@@ -1,5 +1,8 @@
 <h1>README</h1>
 <p>This is a JavaScript calculator created for Odin Project's curriculum. It performs simple arithmetic operations, including addition, subtraction, multiplication, and division.</p>
+<p> I was inspired by the w-11 featherweight calculator design </p>
+
+<img src=./Screenshot.png>
 <h2>How to use</h2>
 <ol>
 <li>
