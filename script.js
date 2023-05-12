@@ -38,10 +38,10 @@ function operate(result,operator,operand) {
             break;
         case "/": return divide(result,operand); 
             break;
-        case "=": return result;
+        
         default : display = `ERROR`;
-    }
-}
+    };
+};
 
 //test
 console.log(operate(0,'+',5));
@@ -59,14 +59,19 @@ buttonsOver.forEach((e)=>{
         e.style.backgroundColor = "#dde2e5";
         e.style.cursor = "default";
       });
-    e.addEventListener("click",()=>{
-        const key = e.getAttribute("data-key");
-        console.log(key);
-    })
 });
 
 //Operators click
+const operators = document.querySelectorAll('.operator');
 
+operators.forEach((e)=>{
+    e.addEventListener('click',()=>{
+        operand = ''; //clear CE
+        const key = e.getAttribute('data-key');
+        operator = key;
+        console.log(operator);
+    });
+});
 //Operands click
 
 const operands = document.querySelectorAll('.operand');
@@ -78,13 +83,22 @@ operands.forEach((e)=>{
         else {
             operand = `${operand}${key}`;
             console.log(operand);
-            displayNumber();
+            displayNumber(operand);
         }
 
     })
 })
 
-//Github link
+//Equals click
+
+const equals = document.querySelector('#equals');
+
+equals.addEventListener('click',()=>{
+    result = operate(result,operator,operand);
+    displayNumber(result);
+}
+)
+//Github link click
 
 const gitlink = document.querySelector('#GIT');
 
@@ -94,11 +108,10 @@ gitlink.addEventListener("click", (e)=>{
 
 //DISPLAY
 
-function displayNumber(){
-    display = operand;
+function displayNumber(number){
     const a = document.querySelector('.display');
-    a.textContent = display;
+    console.log(number);
+    a.textContent = `${number}`;
 }
-
 
 
