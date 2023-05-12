@@ -46,3 +46,12 @@ function operate(result,operator,operand) {
 //test
 console.log(operate(0,'+',5));
 
+const test = document.querySelectorAll(`.button`);
+
+test.forEach((e)=>{
+    test.addEventListener('MouseOver',(e) => {
+        // test.style.bac
+    }
+    )
+})
+
