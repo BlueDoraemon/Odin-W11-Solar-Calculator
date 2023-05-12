@@ -1,3 +1,16 @@
+//VARIABLES
+
+let display = "";
+
+let result = 0;
+
+let operator = "";
+
+let operand = ``;
+
+
+//FUNCTIONS
+
 function add(a,b) {
     return +a + +b;
 
@@ -18,20 +31,29 @@ function divide(a,b) {
 
 function clearCE() {
     operand = ''; //clear CE
+    display = '';
+    console.log(display);
 }
 
-function rounding(number) {
-    return number.toFixed(8); //display how many decimal places
+function rounding(num) {
+    if (isNaN(num)) {
+      return num;
+    }
+    const decimals = num.toString().split(".")[1];
+    if (decimals && decimals.length > 6) {
+      num = num.toFixed(6);
+    }
+    return num;
 }
 
 function ONC(){
-    let display = "";
+    display = "";
 
-    let result = 0;
+    result = 0;
     
-    let operator = "";
+    operator = "";
     
-    let operand = ``;
+    operand = ``;
 }
 
 function operate(result,operator,operand) {
@@ -50,6 +72,8 @@ function operate(result,operator,operand) {
 };
 
 
+
+//EVENTS
 
 //Mouseover buttons
 const buttonsOver = document.querySelectorAll(`.button`);
@@ -99,8 +123,27 @@ const equals = document.querySelector('#equals');
 equals.addEventListener('click',()=>{
     result = operate(result,operator,operand);
     displayNumber(result);
-}
-)
+    console.log(result);
+});
+
+//ON/C click
+
+const onc = document.querySelector('#onc');
+
+onc.addEventListener('click',()=>{
+    ONC();
+    displayNumber(display);
+});
+
+//clear ce click
+
+const clear = document.querySelector('#clearce');
+
+clear.addEventListener('click',()=>{
+    clearCE();
+    displayNumber(display);
+});
+
 //Github link click
 
 const gitlink = document.querySelector('#GIT');
@@ -113,12 +156,12 @@ gitlink.addEventListener("click", (e)=>{
 
 function displayNumber(number){
     const a = document.querySelector('.display');
+    //number = rounding(number);
     console.log(number);
     a.textContent = `${number}`;
-}
+};
 
 
 //RUNNING TASKs
 
 
-ONC();
