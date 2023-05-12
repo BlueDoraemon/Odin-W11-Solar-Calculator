@@ -46,12 +46,29 @@ function operate(result,operator,operand) {
 //test
 console.log(operate(0,'+',5));
 
-const test = document.querySelectorAll(`.button`);
 
-test.forEach((e)=>{
-    test.addEventListener('MouseOver',(e) => {
-        // test.style.bac
-    }
-    )
-})
+//Mouseover buttons
+const buttonsOver = document.querySelectorAll(`.button`);
 
+buttonsOver.forEach((e)=>{
+    e.addEventListener('mouseover',() => {
+         e.style.backgroundColor = '#bed6d8';
+         e.style.cursor = "pointer";
+    });
+    e.addEventListener("mouseout", () => {
+        e.style.backgroundColor = "#dde2e5";
+        e.style.cursor = "default";
+      });
+    e.addEventListener("click",()=>{
+        const key = e.getAttribute("data-key");
+        console.log(key);
+    })
+});
+
+//Github link
+
+const gitlink = document.querySelector('#GIT');
+
+gitlink.addEventListener("click", (e)=>{
+    window.open('https://github.com/BlueDoraemon/', '_blank');
+});
