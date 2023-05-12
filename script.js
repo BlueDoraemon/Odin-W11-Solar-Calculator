@@ -26,7 +26,7 @@ let result = 0;
 
 let operator = "";
 
-let operand = 0;
+let operand = ``;
 
 function operate(result,operator,operand) {
     switch(operator) {
@@ -65,6 +65,21 @@ buttonsOver.forEach((e)=>{
     })
 });
 
+//Operators click
+
+//Operands click
+
+const operands = document.querySelectorAll('.operand');
+
+operands.forEach((e)=>{
+    e.addEventListener('click', ()=>{
+        const key = e.getAttribute('data-key');
+        operand = `${operand}${key}`;
+        console.log(operand);
+        displayNumber();
+    })
+})
+
 //Github link
 
 const gitlink = document.querySelector('#GIT');
@@ -72,3 +87,14 @@ const gitlink = document.querySelector('#GIT');
 gitlink.addEventListener("click", (e)=>{
     window.open('https://github.com/BlueDoraemon/', '_blank');
 });
+
+//DISPLAY
+
+function displayNumber(){
+    display = operand;
+    const a = document.querySelector('.display');
+    a.textContent = display;
+}
+
+
+
