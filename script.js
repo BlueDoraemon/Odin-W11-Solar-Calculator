@@ -1,5 +1,5 @@
 function add(a,b) {
-    return a + b;
+    return +a + +b;
 
 } 
 
@@ -24,13 +24,15 @@ function rounding(number) {
     return number.toFixed(8); //display how many decimal places
 }
 
-let display = "";
+function ONC(){
+    let display = "";
 
-let result = 0;
-
-let operator = "";
-
-let operand = ``;
+    let result = 0;
+    
+    let operator = "";
+    
+    let operand = ``;
+}
 
 function operate(result,operator,operand) {
     switch(operator) {
@@ -47,8 +49,6 @@ function operate(result,operator,operand) {
     };
 };
 
-//test
-console.log(operate(0,'+',5));
 
 
 //Mouseover buttons
@@ -70,9 +70,8 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((e)=>{
     e.addEventListener('click',()=>{
-        
-        const key = e.getAttribute('data-key');
-        operator = key;
+        clearCE();
+        operator = e.getAttribute('data-key');
         console.log(operator);
     });
 });
@@ -119,3 +118,7 @@ function displayNumber(number){
 }
 
 
+//RUNNING TASKs
+
+
+ONC();
