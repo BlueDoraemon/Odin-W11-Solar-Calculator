@@ -1,4 +1,4 @@
-<h1>README</h1>
+<h1>ODIN W11 Solar Calculator</h1>
 <p>This is a JavaScript calculator created for Odin Project's curriculum. It performs simple arithmetic operations, including addition, subtraction, multiplication, and division.</p>
 <p> I was inspired by the w-11 featherweight calculator design </p>
 
