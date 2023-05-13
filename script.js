@@ -8,6 +8,8 @@ let operator = "";
 
 let operand = ``;
 
+let clickedOperator = false;
+
 
 //FUNCTIONS
 
@@ -96,14 +98,20 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((e)=>{
     e.addEventListener('click',()=>{
-     
-        (result != '') ? display = result = operate(result,operator,operand): null;
-        operator = e.getAttribute('data-key');
-        console.log(operator);
-  
-        displayNumber(display);
-        result = display;
-        clearCE();
+        if (operatorClickedBefore) {
+            operator = e.getAttribute('data-key');
+        }
+        else {
+            (result != '') ? (operand === '') ? null : display = result = operate(result,operator,operand) : null;
+            operator = e.getAttribute('data-key');
+            console.log(operator);
+      
+            displayNumber(display);
+            result = display;
+            clearCE();
+            operatorClickedBefore = true;
+        }
+
         
     });
 });
@@ -114,13 +122,14 @@ const operands = document.querySelectorAll('.operand');
 operands.forEach((e)=>{
     e.addEventListener('click', ()=>{
         const key = e.getAttribute('data-key');
-        if (key === `0`&& operand === ``) {
+        if (key === `0`&& operand === `0`) {
           
         }
         else if (operand < 999999.9 && operand > -9999999){
             display = operand = `${operand}${key}`;
             console.log(display);
             displayNumber(display);
+            operatorClickedBefore = false;
         }
 
     })
@@ -131,9 +140,10 @@ operands.forEach((e)=>{
 const equals = document.querySelector('#equals');
 
 equals.addEventListener('click',()=>{
-    (operand === '') ? null : result = operate(result,operator,operand);
-    (result < 9999999 && result > -9999999) ? displayNumber(result) : null;
+    (operand === '') ? null : display = result = operate(result,operator,operand);
+    (result < 9999999 && result > -9999999) ? displayNumber(display) : null;
     console.log(result);    
+    operatorClickedBefore = true;
 });
 
 //ON/C click
@@ -160,13 +170,13 @@ const dot = document.querySelector(`#decimal`);
 
 operand.includes('.') ? null : dot.addEventListener('click', ()=>{
         operand = operand + `.`;
+        displayNumber(operand);
     });
 //sqrt click
 
 const sqrtB = document.querySelector('#sqrt');
 
 sqrtB.addEventListener('click', ()=>{
-    console.log(`display${display}`);
         (operand >= 0 ) ? operand = Math.sqrt(operand) : null;
         console.log(display);
         displayNumber(operand);
