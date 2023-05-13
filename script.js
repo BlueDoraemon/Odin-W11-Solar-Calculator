@@ -1,8 +1,8 @@
 //VARIABLES
 
-let display = "";
+let display = 0;
 
-let result = 0;
+let result = '';
 
 let operator = "";
 
@@ -32,7 +32,8 @@ function divide(a,b) {
 
 
 function clearCE() {
-    operand = ''; //clear CE
+    operand = '';
+    display = 0;//clear CE
     console.log(display);
 };
 
@@ -48,9 +49,9 @@ function rounding(num) {
 };
 
 function ONC(){
-    display = "";
+    display = 0;
 
-    result = 0;
+    result = '';
     
     operator = "";
     
@@ -95,11 +96,15 @@ const operators = document.querySelectorAll('.operator');
 
 operators.forEach((e)=>{
     e.addEventListener('click',()=>{
-  
-        result = operand;
-        clearCE();
+     
+        (result != '') ? display = result = operate(result,operator,operand): null;
         operator = e.getAttribute('data-key');
         console.log(operator);
+  
+        displayNumber(display);
+        result = display;
+        clearCE();
+        
     });
 });
 //Operands click
@@ -113,9 +118,9 @@ operands.forEach((e)=>{
           
         }
         else if (operand < 999999.9 && operand > -9999999){
-            operand = `${operand}${key}`;
-            console.log(operand);
-            displayNumber(operand);
+            display = operand = `${operand}${key}`;
+            console.log(display);
+            displayNumber(display);
         }
 
     })
@@ -126,9 +131,9 @@ operands.forEach((e)=>{
 const equals = document.querySelector('#equals');
 
 equals.addEventListener('click',()=>{
-    result = (operand === '') ? operand : operate(result,operator,operand);
+    (operand === '') ? null : result = operate(result,operator,operand);
     (result < 9999999 && result > -9999999) ? displayNumber(result) : null;
-    console.log(result);
+    console.log(result);    
 });
 
 //ON/C click
