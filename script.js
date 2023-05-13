@@ -60,7 +60,7 @@ function ONC(){
     operand = ``;
 };
 
-function operate(result,operator,operand) {
+function operate(result,operator,display) {
     switch(operator) {
         case "+": return add(result,operand); 
              break;
@@ -102,7 +102,7 @@ operators.forEach((e)=>{
             operator = e.getAttribute('data-key');
         }
         else {
-            (result != '') ? (operand === '') ? null : display = result = operate(result,operator,operand) : null;
+            (result != '') ? (operand === '') ? null : display = result = operate(result,operator,display) : null;
             operator = e.getAttribute('data-key');
             console.log(operator);
       
@@ -140,10 +140,11 @@ operands.forEach((e)=>{
 const equals = document.querySelector('#equals');
 
 equals.addEventListener('click',()=>{
-    (operand === '') ? null : display = result = operate(result,operator,operand);
+    (operand === '') ? null : display = result = operate(result,operator,display);
     (result < 9999999 && result > -9999999) ? displayNumber(display) : null;
     console.log(result);    
     operatorClickedBefore = true;
+    operand = ``;
 });
 
 //ON/C click
